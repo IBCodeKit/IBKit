@@ -1,0 +1,29 @@
+language: swift
+os: osx
+osx_image: xcode11.3
+branches:
+  only:
+    - master
+env:
+  global:
+    - PROJECT="IBKit.xcodeproj"
+    - SCHEME="IBKit-Package"
+    - IOS_SDK="iphonesimulator13.2"
+  jobs:
+    - SDK="$IOS_SDK"      DESTINATION="platform=iOS Simulator,name=iPhone X,OS=13.2"
+
+install:
+  - eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/9f442512a46d7a2af7b850d65a7e9bd31edfb09b/swiftenv-install.sh)"
+
+before_script:
+  - swift package generate-xcodeproj
+
+script:
+  - swiftlint lint
+  - xcodebuild clean build test
+      -project "$PROJECT"
+      -scheme "$SCHEME"
+      -sdk "$SDK"
+      -destination "$DESTINATION"
+      -configuration Debug
+      CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO | xcpretty -c
