@@ -93,7 +93,7 @@ final class Tests: XCTestCase {
         XCTAssert(view.subviews.last is NestedView, "TestView's last subview must be NestedView.")
     }
 
-    func testBuildOnViewController(){
+    func testBuildOnViewController() {
         let vc = TestViewController()
 
         XCTAssertEqual(vc.view.subviews.count, 0, "TestViewController should not have any subviews.")

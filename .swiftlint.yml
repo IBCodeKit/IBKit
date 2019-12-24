@@ -1,0 +1,6 @@
+disabled_rules:
+ - identifier_name
+ - trailing_comma
+
+line_length:
+  warning: 200

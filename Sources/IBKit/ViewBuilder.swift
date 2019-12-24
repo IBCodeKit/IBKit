@@ -8,6 +8,7 @@
 
 import UIKit
 
+// swiftlint:disable line_length function_parameter_count
 @_functionBuilder public struct ViewBuilder {
 
     static public func buildBlock() -> Interface {
@@ -106,3 +107,4 @@ import UIKit
         ViewGroup(children: [c0, c1, c2, c3, c4, c5, c6, c7, c8, c9])
     }
 }
+// swiftlint:enable line_length function_parameter_count
