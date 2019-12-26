@@ -1,0 +1,36 @@
+[
+   {
+      "type":"BASIC",
+      "price":{
+         "min":14.80,
+         "max":16.01,
+         "surge":1.4
+      }
+   },
+   {
+      "type":"PREMIUM",
+      "price":{
+         "min":14.80,
+         "max":16.01,
+         "surge":0.8,
+         "original_min":21.86,
+         "original_max":22.46
+      }
+   },
+   {
+      "type":"ASSIST",
+      "price":{
+         "min":14.80,
+         "max":16.01
+      }
+   },
+   {
+      "type":"VIPVAN",
+      "price":{
+         "min":14.80,
+         "max":16.01,
+         "original_min":21.86,
+         "original_max":22.46
+      }
+   }
+]

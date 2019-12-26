@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "IBKit",
+        "repositoryURL": "https://github.com/IBCodeKit/IBKit.git",
+        "state": {
+          "branch": null,
+          "revision": "4404c3229c06ea371f0dc34c34b0e149234f9ec2",
+          "version": "0.1.0"
+        }
+      },
+      {
+        "package": "SnapKit",
+        "repositoryURL": "https://github.com/SnapKit/SnapKit.git",
+        "state": {
+          "branch": null,
+          "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
+          "version": "5.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
