@@ -124,7 +124,7 @@ class RideEstimationView: UIView, InterfaceBuilder {
                 maker.width.equalTo(50).priority(.low)
             }
 
-            PriceView()
+            PriceView.loadFromIB()
                 .assign(to: \Self.priceView, on: self)
                 .makeConstraints { (maker, views) in
                     maker.trailing.centerY.equalToSuperview()

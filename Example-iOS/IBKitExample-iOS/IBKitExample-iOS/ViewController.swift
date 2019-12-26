@@ -19,17 +19,11 @@ class ViewController: UIViewController, InterfaceBuilder {
             }
 
             for e in estimations ?? [] {
-                let view = RideEstimationView()
+                let view = RideEstimationView.loadFromIB()
                 view.estimation = e
                 stackView.addArrangedSubview(view)
             }
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        build()
-        estimations = decode(from: "ride_estimations")
     }
 
     var body: Interface {
@@ -68,7 +62,8 @@ import SwiftUI
 struct ViewController_Preview: PreviewProvider {
     static var previews: some View {
 
-        let vc = ViewController()
+        let vc = ViewController.loadFromIB()
+        vc.estimations = decode(from: "ride_estimations")
         return Preview(viewController: vc)
             .environment(\.colorScheme, .light)
     }

@@ -34,16 +34,6 @@ class PriceView: UIView, InterfaceBuilder {
         return CGSize(width: max(costSize.width, originalCostSize.width), height: surgingTextSize.height + costSize.height + originalCostSize.height + 2)
     }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        build()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        build()
-    }
-
     var body: Interface {
         ViewGroup {
             UILabel()
@@ -115,7 +105,7 @@ struct PriceView_Preview: PreviewProvider {
         ].compactMap { $0 }
 
         return ForEach(costs, content: { (price) -> Preview in
-            let priceView = PriceView()
+            let priceView = PriceView.loadFromIB()
             priceView.price = price
             return Preview(view: priceView)
         })
