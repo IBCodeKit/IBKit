@@ -18,7 +18,7 @@ public protocol InterfaceBuilder {
 extension InterfaceBuilder where Self: UIView {
 
     /// Returns a newly initialized view with the InterfaceBuilder's body.
-    static func loadFromIB() -> Self {
+    static public func loadFromIB() -> Self {
         let this = Self.init()
         this.build()
         return this
@@ -37,7 +37,7 @@ extension InterfaceBuilder where Self: UIView {
 extension InterfaceBuilder where Self: UIViewController {
 
     /// Returns a newly initialized view controller with the InterfaceBuilder's body.
-    static func loadFromIB() -> Self {
+    static public func loadFromIB() -> Self {
         let this = Self.init()
         this.build()
         return this
