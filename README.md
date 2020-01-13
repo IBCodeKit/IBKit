@@ -49,19 +49,16 @@ var body: Interface {
 
 ## Why IBKit
 
-Storyboard, XIB is a kind of XML file. However have you ever edited a storyboard or XIB by hand? Probably not. It isn't easy to read or edit. Storyboards and XIBs have many troublesome properties such as `id`, `destination`, etc. Futhermore these contain a fairly large amount of XML. So it is impossible to see what’s changed when someone opens a pull request with its modification.
+IBKit lets you write intuitive UI code in a collaboration-friendly way.
 
-Worse, Storyboards have a habit of growing larger and larger over time. they might start off small, but then you add another view controller and another, and another, and suddenly you realize that you have ten screens of data in a single file, and any source control changes you make are suddenly quite painful.
+Xcode storyboards and interface builders have advantages in visual representation, but have critical weaknesses:
 
-Also, Interface Builder doesn’t know much about the Swift code, and vice versa. It makes you have lots of unsafe functionality. For example, we Ctrl-drag from IB into our code to connect something to an action. Then what if we delete that action on the code? The code still compiles well but it will be crashed!
+- Readability. IB files are designed to be read by Xcode, not humans.
+- Collaboration. Due to low readability, it is hard to review changes and resolve conflicts.
+- Scope handling. A single storyboard file keeps growing as your codebase grows. If you don't pay enough attention, you'll find a single file contains tens of screens.
+- Safety. Interface builders don't know much about your Swift code. Missing references are not caught at compile-time and lead to runtime crash.
 
-~Finally Interface Builder doesn't work as intended. Named colors that set from xib can not be changed in `viewDidLoad`, `viewWillAppear`, `awakeFromNib` method.~
-
-Nevertheless, Storyboard, XIB has powerful advantages. It gives you a very good visual representation. Also it is easy of use. When you create a ViewController programmatically, it has a lot of codes and looks too verbose.
-
-Basically, IBKit is a tool for programmtically UI. By using declarative style, you can understand the UI intuitively. Also IBKit has a simple `Preview` class for Xcode Previews. You can be given a realtime visual representation easily.
-
-IBKit is the most straight forward, the easiest way to implement your UI.
+IBKit has an intuitive syntax written in Swift code, inspired by SwiftUI, and supports easy integration with Xcode Previews.
 
 ## Requirements
 
@@ -71,10 +68,9 @@ IBKit is the most straight forward, the easiest way to implement your UI.
 
 ## Installation
 
-`IBKit` doesn't contain any external dependencies.
-These are currently support options:
+`IBKit` requires no external dependencies. Supported installation options are:
 
-### Cocoapods
+### CocoaPods
 ```
 # Podfile
 user_framework!
@@ -86,7 +82,7 @@ Replace `YOUR_TARGET_NAME` and then, in the `Podfile` directory, type:
 ```
 $ pod install
 ```
-> Deployment target 11.0+ is required to install IBKit via Cocoapods.
+> Deployment target 11.0+ is required to install IBKit via CocoaPods.
 
 ### Swift Package Manager
 
@@ -129,7 +125,7 @@ class PriceView: UIView, InterfaceBuilder {
 }
 ```
 
-Declare user interfaces in the body
+Declare user interfaces in `body`.
 
 ```Swift
 ViewGroup {
@@ -153,7 +149,7 @@ ViewGroup {
 }
 ```
 
-Instantiate your view(Controller) using a `loadFromIB` method.
+Instantiate your view (or view controller) using a `loadFromIB` method.
 
 ```Swift
 let view = PriceView.loadFromIB()
@@ -168,11 +164,10 @@ override init(frame: CGRect) {
 }
 ```
 
-### Xcode Preivews
+### Xcode Previews
 
-1. To use Xcode Previews, SwiftUI framework must be imported weakly on your project.
-
-    Open XcodeProject > `Build Phases` > `Link Binary With Libraries` > Add `SwifTUI` > Change SwiftUI status to `Optional`
+1. Import the SwiftUI framework to your project. (Import **WEAKLY** if you support < iOS 13 devices, otherwise it crashes)
+> Open XcodeProject > `Build Phases` > `Link Binary With Libraries` > Add `SwifTUI` > Change SwiftUI status to `Optional`
 
 2. Conform to `PreviewProvider` protocol.
 
