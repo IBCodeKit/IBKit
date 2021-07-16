@@ -48,7 +48,11 @@ extension UIView {
 
     @available(iOS 12.0, *)
     @discardableResult public func transform3D(_ transform: CATransform3D) -> Self {
-        self.transform3D = transform
+        if #available(iOS 13.0, *) {
+            self.transform3D = transform
+        } else {
+            // Fallback on earlier versions
+        }
         return self
     }
 
