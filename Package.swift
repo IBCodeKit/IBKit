@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "IBKit",
     platforms: [
-        .iOS(.v10)
+        .iOS(.v9)
     ],
     products: [
         .library(
